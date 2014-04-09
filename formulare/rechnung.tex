@@ -4,65 +4,77 @@
 \usepackage{eurosym}
 \usepackage{booktabs}
 \usepackage{graphicx}
-
 \renewcommand{\familydefault}{\sfdefault}
 
-\setkomavar{fromname}{fnordeingang e.V.\\c/o Jan Krings}
+% Mitgliedsparameter
+\newcommand{\fnordmitglied}{10006}
+\newcommand{\fnordname}{Max Mustermann}
+\newcommand{\fnordstrasse}{Musterstr. 12}
+\newcommand{\fnordort}{41460 Neuss}
+% Rechnungsparameter
+\newcommand{\fnordrechnung}{199}
+\newcommand{\fnordbelegdatum}{28.04.2013}
+\newcommand{\fnordvondatum}{01.04.2013}
+\newcommand{\fnordbisdatum}{30.04.2014}
+\newcommand{\fnordpositionen}{1 & 1 Mnt & Mitgliedsbeitrag - Normal & \EUR{10,00} & \EUR{10,00}\\\hline}
+\newcommand{\fnordendbetrag}{\EUR{10,00}}
+\newcommand{\fnordzahldatum}{29.05.2013}
+
+\setkomavar{fromname}{fnordeingang e.V.\\c/o Jan Rauschenbach}
 \setkomavar{fromaddress}{Eichendorffstr. 44\\41464 Neuss}
-\setkomavar{subject}{Beitragsrechnung}
+\setkomavar{subject}{Beitragsrechnung\\für den Zeitraum vom {\fnordvondatum} bis \fnordbisdatum}
 \setkomavar{place}{Neuss}
 \setkomavar{fromlogo}{\includegraphics[scale=0.5]{logo}}
 
-
 \firsthead{
-\raisebox{-\totalheight}{%
-      \usekomavar{fromlogo}}%
+\raisebox{-\totalheight}{\usekomavar{fromlogo}}%
 \null\hfill
   \parbox[t][\headheight][t]{6cm}{%
    \raggedright
    \color[gray]{.5}%
    \usekomavar{fromname}\\
    \usekomavar{fromaddress}\\[\baselineskip]
- %  \usekomavar*{fromphone}\\[\baselineskip]
+%  \usekomavar*{fromphone}\\[\baselineskip]
    E-Mail:\hfill verein@fnordeingang.de\\
    Webseite:\hfill https://fnordeingang.de\\[\baselineskip]
    }%
 }
 
-
 \setkomavar{location}{
 \\[\baselineskip]
 \\[\baselineskip]
-  \large{Rechnung Nr.\hfill 199}\\
-  \large{Mitglied Nr.\hfill 10006}\\
-  \large{Datum\hfill 28.04.2013}\\
+  \large{Rechnung Nr.\hfill \fnordrechnung}\\
+  \large{Mitglied Nr.\hfill \fnordmitglied}\\
+  \large{Datum\hfill \fnordbelegdatum}\\
 }
+
 \begin{document}
 \setlength{\parindent}{0pt}
-% If you want headings on subsequent pages,
-% remove the ``%'' on the next line:
-% \pagestyle{headings}
+%\pagestyle{headings} % Für Header auf nachfolgenden Seiten einkommentieren
 
-\begin{letter}{Max Mustermann\\Musterstr. 12\\41460 Neuss}
+\begin{letter}{
+  \fnordname\\
+  \fnordstrasse\\
+  \fnordort
+}
 \opening{}
 \renewcommand{\arraystretch}{1.3}
-
 \baselineskip=12pt
 \begin{tabular*}{\textwidth}{ccp{0.54\textwidth}rr}
-  \textbf{Pos} & \textbf{Menge} & \textbf{Bezeichnung} & \textbf{Einzelpreis} & \textbf{Betrag} \\
+ \textbf{Pos} & \textbf{Menge} & \textbf{Bezeichnung} & \textbf{Einzelpreis} & \textbf{Betrag} \\
  \hline
- 1 & 1 Mnt & Mitgliedsbeitrag - Normal & \EUR{10,00} & \EUR{10,00}\\
- \hline
- \multicolumn{4}{r}{\rule{0pt}{4ex}Nettobetrag} & \multicolumn{1}{r}{\EUR{10,00}}\\[-4pt]
- \multicolumn{4}{r}{Umsatzsteuer 0\% (Steuerfreie Produkte)} & \multicolumn{1}{r}{\EUR{0,00}}\\
- \hline
- \multicolumn{4}{r}{\rule{0pt}{4ex}Endbetrag} & {\EUR{10,00}}\\
+ \fnordpositionen
+% \multicolumn{4}{r}{\rule{0pt}{4ex}Nettobetrag} & \multicolumn{1}{r}{\EUR{10,00}}\\[-4pt]
+% \multicolumn{4}{r}{Umsatzsteuer 0\% (Steuerfreie Produkte)} & \multicolumn{1}{r}{\EUR{0,00}}\\
+% \hline
+ \multicolumn{4}{r}{\rule{0pt}{4ex}Endbetrag} & \fnordendbetrag\\
 \end{tabular*}
 \\
-%Im ausgewiesenen Betrag ist gemäß §19 UStG keine Umsatzsteuer enthalten. \\
-[\baselineskip]
 \\
-Zahlbar bis 29.04.2014 ohne Abzug.
+{\footnotesize Im ausgewiesenen Betrag ist gemäß §19 UStG keine Umsatzsteuer enthalten.} \\
+\\[\baselineskip]
+\\
+Zahlbar bis {\fnordzahldatum} ohne Abzug. \\
 \\
 \\
 Bankverbindung: Konto 93421964 • BLZ 30550000 • Sparkasse Neuss
